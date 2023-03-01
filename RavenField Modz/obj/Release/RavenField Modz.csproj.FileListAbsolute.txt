@@ -9,3 +9,7 @@ C:\Users\lshad\source\repos\RavenField Modz\RavenField Modz\Package\plugins\Rave
 C:\Users\lshad\source\repos\RavenField Modz\RavenField Modz\obj\Release\RavenField Modz.csproj.AssemblyReference.cache
 C:\Users\lshad\source\repos\RavenField Modz\RavenField Modz\obj\Release\RavenField Modz.csproj.CoreCompileInputs.cache
 C:\Users\lshad\source\repos\RavenField Modz\RavenField Modz\obj\Release\RavenField Modz.dll
+C:\Users\Justin\Documents\GitHub\Ravenfield-Modz\RavenField Modz\Package\plugins\RavenField Modz\RavenField Modz.dll
+C:\Users\Justin\Documents\GitHub\Ravenfield-Modz\RavenField Modz\obj\Release\RavenField Modz.csproj.AssemblyReference.cache
+C:\Users\Justin\Documents\GitHub\Ravenfield-Modz\RavenField Modz\obj\Release\RavenField Modz.csproj.CoreCompileInputs.cache
+C:\Users\Justin\Documents\GitHub\Ravenfield-Modz\RavenField Modz\obj\Release\RavenField Modz.dll
