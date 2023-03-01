@@ -1,0 +1,11 @@
+C:\Users\Justin\source\repos\RavenField Modz\RavenField Modz\Package\plugins\RavenField Modz\RavenField Modz.dll
+C:\Users\Justin\source\repos\RavenField Modz\RavenField Modz\obj\Release\RavenField Modz.csproj.AssemblyReference.cache
+C:\Users\Justin\source\repos\RavenField Modz\RavenField Modz\obj\Release\RavenField Modz.csproj.CoreCompileInputs.cache
+C:\Users\Justin\source\repos\RavenField Modz\RavenField Modz\obj\Release\RavenField Modz.dll
+C:\Users\Justin\source\repos\RavenField Modz\RavenField Modz\Package\plugins\RavenField Modz\Assembly-CSharp-firstpass_publicized.dll
+C:\Users\Justin\source\repos\RavenField Modz\RavenField Modz\Package\plugins\RavenField Modz\Assembly-CSharp_publicized.dll
+C:\Users\Justin\source\repos\RavenField Modz\RavenField Modz\obj\Release\RavenField Modz.csproj.CopyComplete
+C:\Users\lshad\source\repos\RavenField Modz\RavenField Modz\Package\plugins\RavenField Modz\RavenField Modz.dll
+C:\Users\lshad\source\repos\RavenField Modz\RavenField Modz\obj\Release\RavenField Modz.csproj.AssemblyReference.cache
+C:\Users\lshad\source\repos\RavenField Modz\RavenField Modz\obj\Release\RavenField Modz.csproj.CoreCompileInputs.cache
+C:\Users\lshad\source\repos\RavenField Modz\RavenField Modz\obj\Release\RavenField Modz.dll
