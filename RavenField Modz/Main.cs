@@ -26,7 +26,7 @@ namespace RavenField_Modz
         public static bool _showGui = false;
         public static bool _showGui2 = false;
         public static Rect windowRect = new Rect(0, 0, 150, 250);
-        public static Rect windowRect2 = new Rect(0, 0, 120, 100);
+        public static Rect windowRect2 = new Rect(0, 0, 150, 250);
 
         #endregion
 
@@ -41,11 +41,53 @@ namespace RavenField_Modz
         public void Start()
         {
             harmony.PatchAll(assembly);
+            windowRect = CenterWindow(windowRect);
+            windowRect2 = CenterWindow(windowRect2);
+        }
+
+        public void OnGUI()
+        {
+            if (_showGui)
+            {
+                GUI.color = Color.gray;
+                windowRect = GUI.Window(0, windowRect, MakeMainWindow, "Debug Menu") ;
+            }
+            if (_showGui2)
+            {
+                GUI.color = Color.gray;
+                windowRect2 = GUI.Window(1, windowRect2, Modules.LocalPlayer.Health_Controller.HealthWindow, "LocalPlayer Options");
+            }
+        }
+
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha7))
+            {
+                _showGui = !_showGui;
+            }
+        }
+
+        // Makes any Rect you pass through, auto center to your screen.
+        public static Rect CenterWindow(Rect windowRect)
+        {
+            windowRect.x = (Screen.width - windowRect.width) / 2;
+            windowRect.y = (Screen.height - windowRect.height) / 2;
+            return windowRect;
         }
 
         public void MakeMainWindow(int windowID)
         {
-            if (GUI.Button(new Rect(10, 20, 130, 20), "LocalPlayer Options"))
+
+            GUIStyle style = new GUIStyle(GUI.skin.button);
+            style.normal.textColor = Color.yellow;
+
+            GUIStyle style2 = new GUIStyle(GUI.skin.box);
+            style2.normal.textColor = Color.yellow;
+
+            Vector2 size = style.CalcSize(new GUIContent("LocalPlayer Options"));
+            Vector2 size2 = style2.CalcSize(new GUIContent(" X "));
+
+            if (GUI.Button(new Rect(10, 20, size.x, size.y), "LocalPlayer Options", style))
             {
                 _showGui2 = true;
                 if (_showGui2)
@@ -53,27 +95,11 @@ namespace RavenField_Modz
                     _showGui = false;
                 }
             }
-            GUI.DragWindow();
-        }
-
-        public void OnGUI()
-        {
-            if (_showGui)
-            {
-                windowRect = GUI.Window(0, windowRect, MakeMainWindow, "Debug Menu");
-            }
-            if (_showGui2)
-            {
-                windowRect2 = GUI.Window(1, windowRect2, Modules.LocalPlayer.Health_Controller.HealthWindow, "LocalPlayer Options");
-            }
-        }
-
-        public void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Keypad1))
+            if (GUI.Button(new Rect(123, 225, size2.x, size2.y), " X ", style2))
             {
                 _showGui = !_showGui;
             }
+            GUI.DragWindow();
         }
     }
 }
