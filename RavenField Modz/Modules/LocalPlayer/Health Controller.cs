@@ -44,6 +44,7 @@ namespace RavenField_Modz.Modules.LocalPlayer
                 Refs.LocalPlayer.activeWeapon.ammo = 999999;
                 Refs.LocalPlayer.activeWeapon.spareAmmo = 999999;
                 Refs.LocalPlayer.speedMultiplier = 10;
+                Refs.LocalPlayer.SetTeam(1);// 0 is blue 1 is red refs.localplayer.Setteam(int team)
             }
 
             else if (!_isToggled)
