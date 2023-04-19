@@ -3,11 +3,11 @@ using UnityEngine.SceneManagement;
 
 namespace RavenField_Modz.Modules.LocalPlayer
 {
-    internal class FlightModule : MonoBehaviour
+    internal class Flight : MonoBehaviour
     {
         internal static bool isFlying = false;
 
-        internal static void Flight()
+        internal static void FlightMode()
         {
             if (isFlying)
             {

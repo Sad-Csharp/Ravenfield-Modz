@@ -27,14 +27,19 @@
     <Compile Include="Main.cs" />
     <Compile Include="Modules\GuiClasses\LocalPlayerMenu.cs" />
     <Compile Include="Modules\GuiClasses\RavenGui.cs" />
-    <Compile Include="Modules\LocalPlayer\FlightModule.cs" />
+    <Compile Include="Modules\LocalPlayer\Flight.cs" />
+    <Compile Include="Modules\LocalPlayer\Teleport.cs" />
     <Compile Include="Refs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="GameDir.targets" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)" "$(GameDir)\Bepinex\plugins\$(ProjectName)\" /q /s /y /i</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)" "$(GameDir)\Bepinex\plugins\$(ProjectName)\" /q /s /y /i
+start steam://rungameid/636480</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>wmic process where name='ravenfield.exe' delete</PreBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <None Include="packager.bat">

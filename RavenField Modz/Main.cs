@@ -2,8 +2,10 @@
 using BepInEx.Logging;
 using HarmonyLib;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace RavenField_Modz
 {
@@ -16,7 +18,7 @@ namespace RavenField_Modz
             MODNAME = "RavenFieldGui",
             AUTHOR = "Mizar",
             GUID = AUTHOR + "_" + MODNAME,
-            VERSION = "1.2.0";
+            VERSION = "1.2.1";
 
         internal readonly ManualLogSource log;
         internal readonly Harmony harmony;
@@ -27,8 +29,8 @@ namespace RavenField_Modz
         public static bool showGui2 = false;
         public static bool isFlying = false;
         public static float initialValue;
-        public static Rect windowRect = new Rect(0, 0, 150, 250);
-        public static Rect windowRect2 = new Rect(0, 0, 150, 250);
+        public static Rect windowRect = new Rect(0, 0, 0, 0);
+        internal static string[] sceneBlackList = { "Loading", "Loaded", "Unloading", "Menu" };
 
         #endregion
 
@@ -40,44 +42,47 @@ namespace RavenField_Modz
             modFolder = Path.GetDirectoryName(assembly.Location);
         }
 
+        public void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+        {
+            if (sceneBlackList.Contains(scene.name) == false)
+            {
+
+            }
+        }
+
         public void Start()
         {
             harmony.PatchAll(assembly);
             windowRect = CenterWindow(windowRect);
-            windowRect2 = CenterWindow(windowRect2);
         }
 
         public void OnGUI()
         {
+            #region FINISHME
             //// RavenGUI
             //if (showGui)
             //{
             //    GUI.color = Color.gray;
             //    windowRect = GUILayout.Window(0, windowRect, Modules.GuiClasses.RavenGui.MainWindow, "Debug Menu", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
-            //}
+            //} 
+            #endregion
 
             // LocalPlayer Gui
             if (showGui2)
             {
                 GUI.color = Color.gray;
-                windowRect2 = GUILayout.Window(1, windowRect2, Modules.GuiClasses.LocalPlayerMenu.LocalPlayerWindow, "LocalPlayer Options", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+                windowRect = GUILayout.Window(1, windowRect, Modules.GuiClasses.LocalPlayerMenu.LocalPlayerWindow, "LocalPlayer Options", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
             }
         }
 
         public void Update()
         {
-            Modules.LocalPlayer.FlightModule.Flight();
+            Modules.LocalPlayer.Flight.FlightMode();
+            Modules.LocalPlayer.Teleport.CrosshairTeleport();
+            Modules.LocalPlayer.Teleport.AiTeleport();
             if (Input.GetKeyDown(KeyCode.Alpha7))
             {
                 showGui2 = !showGui2;
-            }
-            if(Input.GetKey(KeyCode.Space))
-            {
-                if (!Refs.FirstPersonController.canJump) 
-                {
-                    Refs.FirstPersonController.canJump = true;
-                    Refs.ActorPlayer.parachuteDeployed = false;
-                }
             }
         }
 
@@ -91,40 +96,6 @@ namespace RavenField_Modz
             windowRect.x = (Screen.width - windowRect.width) / 2;
             windowRect.y = (Screen.height - windowRect.height) / 2;
             return windowRect;
-        }
-
-        /// <summary>
-        /// Store values of your choosing (soon)
-        /// </summary>
-        internal static void GetInitialValues()
-        {
-            if (PlayerPrefs.HasKey("initialValue"))
-            {
-                initialValue = PlayerPrefs.GetFloat("initialValue");
-                Debug.LogWarning($"[GetInitialValues]:Found InitialValue: {initialValue}f");
-            }
-            else
-            {
-                initialValue = Refs.ActorPlayer.health;
-                PlayerPrefs.SetFloat("initialValue", initialValue);
-                Debug.LogWarning($"[GetInitialValues]:InitialValue Was Blank, Setting InitialValue Now To {initialValue}f");
-            }
-        }
-
-        /// <summary>
-        /// Restore values of your choosing (soon)
-        /// </summary>
-        internal static void RestoreInitialValues()
-        {
-            if (Refs.ActorPlayer != null)
-            {
-                Refs.ActorPlayer.health = initialValue;
-                Debug.LogWarning($"[RestoreInitialValues]:Found InitialValue: {initialValue}f, Restoring InitialValue Now...");
-            }
-            else
-            {
-                Debug.LogError("[RestoreInitialValues]: Could Not Find LocalPlayer!");
-            }
         }
     }
 }

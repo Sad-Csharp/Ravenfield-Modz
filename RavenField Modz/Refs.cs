@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using MapEditor;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityStandardAssets.Characters.FirstPerson;
 
@@ -17,16 +18,15 @@ namespace RavenField_Modz
         #endregion
 
         #region[LocalPlayer]
-        internal static Actor ActorPlayer { get => ActorManager.player; }
-        internal static GameObject PlayerObj { get => ActorPlayer.originalParent.gameObject; }
-        internal static FpsActorController FPSactorcontroller { get => FpsActorController.instance; }
-        internal static FirstPersonControllerInput FirstPersonControllerInput { get => FindObjectOfType<FirstPersonControllerInput>(); }
+        internal static Actor Actor { get => ActorManager.player; }
+        internal static GameObject PlayerObj { get => Actor.originalParent.gameObject; }
+        internal static FpsActorController FPSactorcontroller { get => PlayerObj.GetComponent<FpsActorController>(); }
+        internal static FirstPersonControllerInput FirstPersonControllerInput { get => PlayerObj.GetComponent<FirstPersonControllerInput>(); }
         internal static FirstPersonController FirstPersonController { get => PlayerObj.GetComponent<FirstPersonController>(); }
         #endregion
 
         #region[Blue AI = 0, Red AI = 1]
         internal static AiActorController[] AiActors { get => FindObjectsOfType<AiActorController>(); }
-
         #endregion
     }
 }
