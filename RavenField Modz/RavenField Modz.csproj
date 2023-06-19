@@ -25,8 +25,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
+    <Compile Include="Modules\Ai\AiTeleport.cs" />
+    <Compile Include="Modules\LocalPlayer\ESP.cs" />
+    <Compile Include="Modules\GuiClasses\AiMenu.cs" />
     <Compile Include="Modules\GuiClasses\LocalPlayerMenu.cs" />
-    <Compile Include="Modules\GuiClasses\RavenGui.cs" />
+    <Compile Include="Modules\GuiClasses\RavenMenu.cs" />
     <Compile Include="Modules\LocalPlayer\Flight.cs" />
     <Compile Include="Modules\LocalPlayer\Teleport.cs" />
     <Compile Include="Refs.cs" />

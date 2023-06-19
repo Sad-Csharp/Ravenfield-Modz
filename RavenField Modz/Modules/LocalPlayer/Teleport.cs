@@ -17,23 +17,5 @@ namespace RavenField_Modz.Modules.LocalPlayer
                 }
             }
         }
-
-        // Need to figure out how to prevent tp back.
-        internal static void AiTeleport()
-        {
-            if (Input.GetKey(KeyCode.Alpha1) && Modules.GuiClasses.LocalPlayerMenu.raySphereToggle == true)
-            {
-                foreach(AiActorController actorController in Refs.AiActors)
-                {
-                    var AiObj = actorController.gameObject;
-                    var AiActor = AiObj.GetComponent<Actor>();
-                    var AiActorTransform = AiObj.GetComponent<Transform>();
-                    if (AiActor.team == 1)
-                    {
-                        AiActorTransform.position = Refs.PlayerObj.transform.position + new Vector3(0, 0, 5);
-                    }
-                }
-            }
-        }
     }
 }

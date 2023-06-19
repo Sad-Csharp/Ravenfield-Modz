@@ -15,6 +15,10 @@ namespace RavenField_Modz
         internal static DecalManager DecalManager { get => DecalManager.instance; }
         internal static OrderManager OrderManager { get => OrderManager.instance; }
         public static string Active_SceneName { get => SceneManager.GetActiveScene().name; }
+        internal static void ShowText(string text, float duration)
+        {
+            OverlayUi.ShowOverlayText(text, duration);
+        }
         #endregion
 
         #region[LocalPlayer]
